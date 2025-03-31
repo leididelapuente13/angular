@@ -1,0 +1,29 @@
+<h1>{{ name() }}</h1>
+
+<dl>
+  <td>Nombre:</td>
+  <dd>{{ name() }}</dd>
+
+  <td>Edad:</td>
+  <dd>{{ age() }}</dd>
+
+  <td>Método:</td>
+  <dd>{{ hroDescription() }}</dd>
+
+  <td>Capitalizado:</td>
+  <dd> {{ name() | uppercase }} </dd>
+</dl>
+
+<button (click)="changeHero()">
+  Cambiar heroe
+</button>
+
+<button (click)="changeName()">
+  Cambiar nombre
+</button>
+
+<button (click)="changeAge()">
+  Cambiar edad
+</button>
+
+<button (click)="resetForm()">Reset</button>

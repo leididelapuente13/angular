@@ -1,0 +1,23 @@
+<h1>DragonBall Page</h1>
+<hr />
+<section>
+  <form>
+    <h3>Agregar</h3>
+    <input type="text" name="name" placeholder="Name" />
+    <input type="number" name="power" placeholder="Power" />
+    <button type="submit">Agregar</button>
+  </form>
+  <div>
+    <ul>
+      @for (character of characters(); track character.id; let idx = $index; let isEven = $even; let isOdd = $odd) {
+      <li [class.isEven]="isEven"
+          [class.isOdd]="isOdd"
+      >
+        <span>{{ idx + 1}} - {{ character.name }} - </span>
+        <strong [class.dangerText]="character.power >= 14000"
+          [class.infoText]="character.power < 14000">{{ character.power }}</strong>
+      </li>
+      }
+    </ul>
+  </div>
+</section>
