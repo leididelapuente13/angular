@@ -9,6 +9,9 @@ import { Character } from '../../interfaces/Character';
 })
 export class DragonballPageComponent {
 
+  name = signal<string>('Gohan');
+  power = signal<number>(0);
+
   characters = signal<Character[]>([
     {
       id: 1,
@@ -61,4 +64,21 @@ export class DragonballPageComponent {
       power: 30000,
     }
   ]);
+
+  addCharacter() {
+    if(!this.name() || !this.power() || this.power() <= 0) return;
+    const newCharacter: Character = {
+      id: this.characters.length + 1,
+      name: this.name(), 
+      power: this.power()
+    }
+
+    this.characters.update((prev)=> [...prev, newCharacter]),
+    this.resetFields();
+  }
+
+  resetFields(){
+    this.name.set('');
+    this.power.set(0);
+  }
 }
