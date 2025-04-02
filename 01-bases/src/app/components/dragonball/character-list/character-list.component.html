@@ -1,0 +1,18 @@
+<div>
+  <h2>{{title()}}</h2>
+  <ul>
+    @for (character of characters(); track character.id; let idx = $index; let
+    isEven = $even; let isOdd = $odd) { @if(character.power > 8000){
+    <li [class.isEven]="isEven" [class.isOdd]="isOdd">
+      <span>{{ idx + 1 }} - {{ character.name }} - </span>
+      <strong
+        [class.dangerText]="character.power >= 14000"
+        [class.infoText]="character.power < 14000"
+        >{{ character.power }}</strong
+      >
+    </li>
+    } @else {
+    <li><strong>Nothing to see</strong></li>
+    } }
+  </ul>
+</div>

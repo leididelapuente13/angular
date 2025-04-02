@@ -1,0 +1,17 @@
+h2{
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.isEven {
+  background-color: #4b6abe;
+}
+.isOdd {
+  background-color: #efeff3;
+}
+.dangerText{
+  color: #5f0505;
+}
+.infoText{
+  color: #020224;
+}

@@ -1,84 +1,30 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Character } from '../../interfaces/Character';
+import { CharacterListComponent } from "../../components/dragonball/character-list/character-list.component";
+import { CharacterAddComponent } from "../../components/dragonball/character-add/character-add.component";
+import { DragonballService } from '../../services/dragonball.service';
 
 @Component({
   selector: 'app-dragonball',
-  imports: [],
+  imports: [CharacterListComponent, CharacterAddComponent],
   templateUrl: './dragonball-page.component.html',
   styleUrl: './daragonball-page.component.css'
 })
 export class DragonballPageComponent {
 
-  name = signal<string>('Gohan');
-  power = signal<number>(0);
+  // old way of injecting the service
+  // constructor(
+  //   public dragonballService : DragonballService
+  // ){}
 
-  characters = signal<Character[]>([
-    {
-      id: 1,
-      name: 'Goku',
-      power: 15000,
-    },
-    {
-      id: 2,
-      name: 'Vegeta',
-      power: 14000,
-    },
-    {
-      id: 3,
-      name: 'Gohan',
-      power: 12000,
-    },
-    {
-      id: 4,
-      name: 'Piccolo',
-      power: 10000,
-    },
-    {
-      id: 5,
-      name: 'Krillin',
-      power: 8000,
-    },
-    {
-      id: 6,
-      name: 'Bulma',
-      power: 5000,
-    },
-    {
-      id: 7,
-      name: 'Trunks',
-      power: 11000,
-    },
-    {
-      id: 8,
-      name: 'Frieza',
-      power: 20000,
-    },
-    {
-      id: 9,
-      name: 'Cell',
-      power: 25000,
-    },
-    {
-      id: 10,
-      name: 'Majin Buu',
-      power: 30000,
-    }
-  ]);
+  public dragonballService = inject(DragonballService);
 
-  addCharacter() {
-    if(!this.name() || !this.power() || this.power() <= 0) return;
-    const newCharacter: Character = {
-      id: this.characters.length + 1,
-      name: this.name(), 
-      power: this.power()
-    }
-
-    this.characters.update((prev)=> [...prev, newCharacter]),
-    this.resetFields();
+  addCharacter(character: Character) {
+    this.dragonballService.addCharacter(character);
   }
 
-  resetFields(){
-    this.name.set('');
-    this.power.set(0);
+  get characters (){
+    return this.dragonballService.characters();
   }
+
 }
