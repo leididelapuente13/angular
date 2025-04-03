@@ -1,1 +1,17 @@
-<h2>Search Page</h2>
+<h2 class="text-2xl font-bold mt-3">Search Page</h2>
+<h3 class="text-sm text-gray-500">Search gifs by name, description or tags</h3>
+
+<section class="flex flex-col gap-4">
+  <input
+    type="text"
+    name="toSearch"
+    placeholder="Search Gifs"
+    class="mt-4 border border-gray-300 rounded-md p-2"
+    (keyup.enter)="onSearch(txtSearch.value)"
+    #txtSearch
+  />
+</section>
+
+<section class="py-5">
+  <gif-list [gifs]="gifService.foundGifs()" />
+</section>

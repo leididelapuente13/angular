@@ -7,7 +7,10 @@ import { Component, input } from '@angular/core';
 })
 export class GifListItemComponent {
 
-  url = input.required<string>();
+  constructor(){
+    console.log(this.imageUrl);
+  }
 
-
+  imageUrl = input.required<string>();
+  imageAlt = input.required<string>();
 }
