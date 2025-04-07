@@ -1,22 +1,36 @@
+import { computed, effect, inject, Injectable, signal } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { inject, Injectable, signal } from "@angular/core";
 import { environment } from "@enviroments/environment";
+import { map, tap } from "rxjs";
 import type { GiphyResponse } from "../interfaces/giphy.interface";
 import { GifMapper } from "../mapper/gif.mapper";
 import { Gif } from '../interfaces/gif.interface';
+
 
 @Injectable({ providedIn: 'root' })
 export class GifService {
 
   private http = inject(HttpClient);
+  GIF_KEY = 'gifs';
   trendingGifs = signal<Gif[]>([]);
   trendingGifsLoading = signal(true);
-
-  foundGifs = signal<Gif[]>([]);
-  searchingGifs = signal(true);
+  searchHistory = signal<Record<string, Gif[]>>(this.loadGifsFromLocalStorage());
+  searchHistoryKeys = computed(() => Object.keys(this.searchHistory()));
 
   constructor() {
     this.loadTrendingGifs();
+  }
+
+  saveGifsToLocalStorage = effect(() => {
+    const historyString = JSON.stringify(this.searchHistory()) ?? '[]';
+    localStorage.setItem('gifs', historyString);
+  });
+
+  loadGifsFromLocalStorage() {
+    const gifsFromLocalStorage = localStorage.getItem(this.GIF_KEY) ?? '[]';
+    const gifs = JSON.parse(gifsFromLocalStorage);
+    return gifs;
+
   }
 
 
@@ -29,15 +43,14 @@ export class GifService {
         rating: 'g',
         bundle: 'messaging_non_clips',
       }
-    }).subscribe((response)=>{
+    }).subscribe((response) => {
       this.trendingGifs.set(GifMapper.mapGiphyItemstoGifArray(response.data));
       this.trendingGifsLoading.set(false);
     })
   }
 
   serchGifs(query: string) {
-    if(!query.trim()) return; 
-    this.http.get<GiphyResponse>(`${environment.giphyApiUrl}/gifs/search`, {
+    return this.http.get<GiphyResponse>(`${environment.giphyApiUrl}/gifs/search`, {
       params: {
         api_key: environment.giphyApiKey,
         limit: 20,
@@ -47,10 +60,19 @@ export class GifService {
         bundle: 'messaging_non_clips',
         q: query,
       }
-    }).subscribe((response)=>{
-      this.foundGifs.set(GifMapper.mapGiphyItemstoGifArray(response.data));
-      this.searchingGifs.set(false);
-    });
+    }).pipe(
+      map(({ data }) => GifMapper.mapGiphyItemstoGifArray(data)),
+      tap(gifs => {
+        this.searchHistory.update((history) => ({
+          ...history,
+          [query.toLowerCase()]: gifs
+        }))
+      })
+    )
+  }
+
+  getHistoryGifs(query: string) {
+    return this.searchHistory()[query] ?? [];
   }
 
 }

@@ -9,7 +9,6 @@ import { Gif } from '@app/gifs/interfaces/gif.interface';
   templateUrl: './trending-page.component.html',
 })
 export default class TrendingPageComponent {
-
   gifService = inject(GifService);
   gifs = computed<Gif[]>(()=> this.gifService.trendingGifs());
 }

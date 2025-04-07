@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { GifService } from '../../../services/gifs.service';
 
 interface MenuOption{
   label: string;
@@ -15,6 +16,7 @@ interface MenuOption{
 })
 export class SideMenuOptionsComponent {
 
+  gifService = inject(GifService);
 
   menuOptions : MenuOption[] = [
     {
@@ -28,7 +30,6 @@ export class SideMenuOptionsComponent {
       label: 'Search',
       subLabel: 'Search Gifs',
       router: '/dashboard/search'
-    }
+    },
   ]
-
 }
