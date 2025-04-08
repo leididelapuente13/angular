@@ -1,0 +1,33 @@
+<nav class="flex gap-3 justify-between bg-blue-950 text-white cursor-pointer py-1.5 px-3">
+  <div>
+    <h3 class="font-bold">Reactive</h3>
+    <ul>
+      @for (item of reactiveMenu; track item.title) {
+      <li [routerLink]="item.route" routerLinkActive="active">
+        {{ item.title }}
+      </li>
+
+      }
+    </ul>
+  </div>
+  <div>
+    <h3 class="font-bold">Auth</h3>
+    <ul>
+      @for (item of authItems; track item.title) {
+      <li [routerLink]="item.route" routerLinkActive="active">
+        {{ item.title }}
+      </li>
+      }
+    </ul>
+  </div>
+  <div>
+    <h3 class="font-bold">Country</h3>
+    <ul>
+      @for (item of country; track item.title) {
+      <li [routerLink]="item.route" routerLinkActive="active">
+        {{ item.title }}
+      </li>
+      }
+    </ul>
+  </div>
+</nav>

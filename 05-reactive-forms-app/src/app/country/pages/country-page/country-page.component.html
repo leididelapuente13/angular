@@ -1,0 +1,53 @@
+<section class="my-5 mx-auto w-[80%] max-w-96">
+  <h1 class="text-[1.2rem] text-purple-950 font-medium mb-5">
+    Selectores anidados
+  </h1>
+
+  <form class="flex flex-col gap-3">
+    <!-- Region -->
+    <div>
+      <label>Continente:</label>
+      <select class="select" formControlName="region">
+        <option disabled selected>Seleccione Continente</option>
+
+        <!-- <option [value]="region">
+            {{ region }}
+          </option> -->
+      </select>
+    </div>
+
+    <!-- Countries -->
+
+    <div class="flex flex-col">
+      <label>País:</label>
+      <select class="select" formControlName="country">
+        <option value="">Seleccione País</option>
+
+        <!-- <option [value]="country.cca3">
+            {{ country.name }}
+          </option> -->
+      </select>
+    </div>
+
+    <!-- Countries -->
+
+    <div>
+      <label>Fronteras:</label>
+      <select class="select" formControlName="border">
+        <option value="">Seleccione la frontera</option>
+
+        <!-- <option [value]="country.cca3">
+            {{ country.name }}
+          </option> -->
+      </select>
+    </div>
+  </form>
+</section>
+
+<section class="my-5 mx-auto w-[80%] max-w-96">
+  <h3>Formulario</h3>
+  <code>
+    <!-- {{ 'myForm.value' | json }} -->
+  </code>
+  <p>is form valid: {{ "myForm.valid" }}</p>
+</section>

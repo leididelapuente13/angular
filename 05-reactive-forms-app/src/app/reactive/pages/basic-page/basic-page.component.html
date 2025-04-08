@@ -1,0 +1,89 @@
+<section class="my-5 mx-auto w-[80%] max-w-96">
+  <h2 class="text-[1.2rem] text-purple-950 font-medium mb-5">
+    Reactivos: Básicos
+  </h2>
+  <form autocomplete="off" class="flex flex-col gap-3" [formGroup]="myForm">
+    <!-- Campo de producto -->
+    <div class="flex flex-col gap-0.5">
+      <label class="floating-label">
+        <span>Producto</span>
+        <input
+          type="text"
+          class="input"
+          placeholder="Nombre del producto"
+          formControlName="name"
+        />
+      </label>
+      @if (isValidField('name')) {
+      <span class="text-red-800 text-sm">
+        <!-- Debe de ser de 3 letras -->
+        {{myForm.controls.['name'].errors | json}}
+      </span>
+      }
+    </div>
+
+    <!-- Campo de producto -->
+    <div class="flex flex-col gap-0.5">
+      <label class="floating-label block">
+        <span>Precio</span>
+        <input
+          type="number"
+          class="input"
+          placeholder="Precio del producto"
+          formControlName="price"
+        />
+      </label>
+      <span class="text-red-800 text-sm">
+        El precio debe de ser 0 o mayor
+      </span>
+    </div>
+
+    <!-- Campo de existencias -->
+    <div class="flex flex-col gap-0.5">
+      <label class="floating-label">
+        <span>Existencias</span>
+        <input
+          type="number"
+          class="input"
+          placeholder="Existencias del producto"
+          formControlName="inStorage"
+        />
+      </label>
+      <div class="">
+        <span class="text-red-800 text-sm">
+          Las existencias deben de ser 0 o mayor
+        </span>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-info">Guardar</button>
+  </form>
+</section>
+
+<section class="overflow-x-auto mt-7">
+  <table class="table table-zebra">
+    _:,mnbvcxz<
+    <thead>
+      <tr>
+        <th></th>
+        <th>Valid</th>
+        <th>Pristine</th>
+        <th>Touched</th>
+        <th>Value</th>
+        <th>Price</th>
+        <th>Product</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <th>{{ myForm.valid | json }}</th>
+        <td>{{ myForm.pristine | json }}</td>
+        <td>{{ myForm.touched | json }}</td>
+        <td>{{ myForm.value | json }}</td>
+        <td>{{ myForm.controls["price"].value | json }}</td>
+        <td>{{ myForm.controls.name.value | json }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

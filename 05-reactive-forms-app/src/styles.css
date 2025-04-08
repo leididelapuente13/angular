@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: nord --default;
+}
+
+;
+
+* {
+  box-sizing: border-box;
+}

@@ -1,0 +1,85 @@
+<section class="my-5 mx-auto w-[80%] max-w-96">
+  <h2 class="text-[1.2rem] text-purple-950 font-medium mb-5">
+    Reactivos: Switches
+  </h2>
+  <form autocomplete="off" class="flex flex-col gap-4">
+    <!-- Radio -->
+    <div class="flex flex-col gap-0.5">
+      <label class="col-sm-3 col-form-label">Género</label>
+      <div>
+        <input
+          class="radio radio-sm radio-primary"
+          type="radio"
+          value="M"
+          id="radioMasculino"
+        />
+        <label for="radioMasculino"> Masculino </label>
+      </div>
+
+      <div>
+        <input
+          class="radio radio-sm radio-primary"
+          type="radio"
+          value="F"
+          id="radioFemenino"
+        />
+        <label for="radioFemenino"> Femenino </label>
+      </div>
+    </div>
+
+    <!-- Switches -->
+    <div class="flex flex-col gap-0.5">
+      <label class="col-sm-3 col-form-label">Notificaciones</label>
+
+      <label class="fieldset-label" for="flexSwitchCheckChecked">
+        <input
+          class="checkbox checkbox-sm checkbox-primary"
+          type="checkbox"
+          id="flexSwitchCheckChecked"
+        />
+        Quiero recibir notificaciones
+      </label>
+    </div>
+
+    <!-- Switches -->
+    <div class="flex flex-col gap-0.5">
+      <label class="fieldset-label" for="flexCheckDefault">
+        <input
+          class="checkbox checkbox-sm checkbox-primary"
+          type="checkbox"
+          id="flexCheckDefault"
+        />
+        Términos y condiciones de uso
+      </label>
+      <span class="text-red-800 text-sm">
+        Debe de aceptar las condiciones de uso
+      </span>
+    </div>
+
+    <!-- Boton submit -->
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-primary w-[80%]" type="submit">Guardar</button>
+      </div>
+    </div>
+  </form>
+</section>
+
+<section class="my-3">
+  <h5>Valor del formulario</h5>
+  <pre>{{ "object" | json }}</pre>
+  <br />
+
+  <h5>Persona</h5>
+  <pre>{{ "object" | json }}</pre>
+  <br />
+
+  <h5>Valid</h5>
+  <pre>{{ "object" | json }}</pre>
+</section>
+
+<!-- <h5>Términos</h5> -->
+<!-- <pre>{{ myForm.controls?.terminos?.errors | json }}</pre> -->
+
+<!-- <br>
+<pre>Condiciones: </pre> -->

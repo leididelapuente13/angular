@@ -1,0 +1,67 @@
+<section class="my-5 mx-auto w-[80%] max-w-96">
+  <h2 class="text-[1.2rem] text-purple-950 font-medium mb-5">
+    Reactivos: <small> Dinámicos </small>
+  </h2>
+
+  <form autocomplete="off" class="flex flex-col gap-3">
+    <!-- Nombre -->
+    <div class="flex flex-col gap-0.5">
+      <label class="floating-label">
+        <span>Nombre</span>
+        <input placeholder="Nombre de la persona" class="input" />
+      </label>
+      <span class="text-red-800 text-sm"> error message </span>
+    </div>
+
+    <!-- Agregar Favorito -->
+    <div class="flex flex-col gap-1.5">
+      <label class="floating-label">
+        <span>Agregar</span>
+        <input placeholder="Agregar favorito" class="input" />
+      </label>
+      <button class="btn btn-outline btn-info w-fit" type="button">
+        Agregar favorito
+      </button>
+    </div>
+
+    <!-- Lista de Juegos Favoritos -->
+    <div class="flex flex-col gap-0.5 mt-2">
+      <label>Favoritos</label>
+      <div class="mb-1">
+        <div class="flex gap-1">
+          <input class="input" />
+          <button class="btn btn-outline" type="button">Eliminar</button>
+        </div>
+        <span class="text-red-800 text-sm"> Este campo es requerido </span>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-info">
+      <!-- [disabled]="myForm.invalid" -->
+      Guardar
+    </button>
+  </form>
+</section>
+
+<section>
+  <table class="table table-zebra">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th></th>
+        <th>Valid</th>
+        <th>Value</th>
+        <th>Add game</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      <tr>
+        <td></td>
+        <td>{{ "objeto" | json }}</td>
+        <td>{{ "objeto" | json }}</td>
+        <td>{{ "objeto" | json }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
