@@ -29,5 +29,4 @@ export class SideMenuComponent {
       route: '/country'
     }
   ]
-
 }

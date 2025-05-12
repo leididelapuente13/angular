@@ -30,9 +30,7 @@ export class GifService {
     const gifsFromLocalStorage = localStorage.getItem(this.GIF_KEY) ?? '[]';
     const gifs = JSON.parse(gifsFromLocalStorage);
     return gifs;
-
   }
-
 
   loadTrendingGifs() {
     this.http.get<GiphyResponse>(`${environment.giphyApiUrl}/gifs/trending`, {

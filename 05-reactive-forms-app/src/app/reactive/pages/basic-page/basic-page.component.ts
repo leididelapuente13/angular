@@ -31,8 +31,7 @@ export class BasicPageComponent {
     if(!this.myForm.controls[fieldName]) return null;
 
     const errors = this.myForm.controls[fieldName].errors ?? {}
-  
-    for()
+
   }
 
 
