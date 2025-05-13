@@ -1,0 +1,86 @@
+<header class="navbar bg-base-100 shadow-sm">
+    <nav class="navbar-start">
+        <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h8m-8 6h16"
+                    />
+                </svg>
+            </div>
+            <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            >
+                <li><a>Inicio</a></li>
+            </ul>
+        </div>
+        <a class="btn btn-ghost text-xl">daisyUI</a>
+    </nav>
+    <div class="navbar-center hidden md:flex">
+        <ul class="menu menu-horizontal px-1">
+            <li>
+                <a routerLink="by-country">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                    >
+                        <path
+                            fill="currentColor"
+                            fill-rule="evenodd"
+                            d="M10.496 2.132a1 1 0 0 0-.992 0l-7 4A1 1 0 0 0 3 8v7a1 1 0 1 0 0 2h14a1 1 0 1 0 0-2V8a1 1 0 0 0 .496-1.868zM6 9a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0v-3a1 1 0 0 0-1-1m3 1a1 1 0 0 1 2 0v3a1 1 0 1 1-2 0zm5-1a1 1 0 0 0-1 1v3a1 1 0 1 0 2 0v-3a1 1 0 0 0-1-1"
+                            clip-rule="evenodd"
+                        /></svg
+                    >Pais
+                </a>
+            </li>
+            <li>
+                <a routerLinkActive="btn btn-primary" routerLink="by-capital">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                    >
+                        <path
+                            fill="currentColor"
+                            fill-rule="evenodd"
+                            d="M4 4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a1 1 0 1 1 0 2h-3a1 1 0 0 1-1-1v-2a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v2a1 1 0 0 1-1 1H4a1 1 0 1 1 0-2zm3 1h2v2H7zm2 4H7v2h2zm2-4h2v2h-2zm2 4h-2v2h2z"
+                            clip-rule="evenodd"
+                        /></svg
+                    >Capital
+                </a>
+            </li> 
+            <li>
+                <a routerLink="by-region">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 20 20"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M10.707 2.293a1 1 0 0 0-1.414 0l-7 7a1 1 0 0 0 1.414 1.414L4 10.414V17a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-6.586l.293.293a1 1 0 0 0 1.414-1.414z"
+                        />
+                    </svg>
+                    Region
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-end">
+        <a class="btn">Inicio</a>
+    </div>
+</header>
