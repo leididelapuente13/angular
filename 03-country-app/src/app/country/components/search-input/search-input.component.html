@@ -2,10 +2,10 @@
     <input
         type="text"
         class="input input-bordered mt-2 w-56"
-        placeholder="Buscar por capital"
+        [placeholder]="placeholder()"
         autofocus
         #txtSearch
-        (keyup.enter)="onSearch(#txtSearch.value)"
+        (keyup.enter)="onSearch(txtSearch.value)"
     />
     <button class="btn btn-primary mt-2" (click)="onSearch(txtSearch.value)">
         Buscar
