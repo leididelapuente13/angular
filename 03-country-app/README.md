@@ -81,3 +81,5 @@ To have a local reference for an input and access to its value directly.
 ```html
 <input type="text" #txtName (keyup.enter)="onSearch(txtName.value)" />
 ```
+
+## Mappers
