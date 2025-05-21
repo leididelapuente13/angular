@@ -141,3 +141,5 @@ serachByCapital(query: string): Observable<Country[]> {
 - ### pipe()
     is for chaining observable operators.
 
+## Handle exceptions
+    

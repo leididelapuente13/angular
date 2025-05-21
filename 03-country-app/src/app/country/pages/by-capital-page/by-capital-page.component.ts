@@ -22,11 +22,16 @@ export class ByCapitalPageComponent {
         this.isLoading.set(true);
         this.isError.set(null);
 
-        this.countryService.serachByCapital(query).subscribe(
-            (countries) => {
-                this.isLoading.set(false);
+        this.countryService.serachByCapital(query).subscribe({
+            next: (countries)=>{
                 this.countries.set(countries);
+                this.isLoading.set(false);
+            },
+            error: (error)=>{
+                this.isLoading.set(false);
+                this.countries.set([]);
+                this.isError.set(`No se encontro un país con la capital ${query}`);
             }
-        )
+        })
     }
 }
