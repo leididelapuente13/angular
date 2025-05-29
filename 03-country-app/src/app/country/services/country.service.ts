@@ -29,7 +29,7 @@ export class CountryService {
             catchError((error)=>{
                 console.log('error fetching', error)
                 return throwError(()=> new Error(`Error fetching country ${query}, ${error}`));
-            })
+            }                                                  )
         )
     }
 

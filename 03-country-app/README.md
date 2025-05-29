@@ -142,4 +142,52 @@ serachByCapital(query: string): Observable<Country[]> {
     is for chaining observable operators.
 
 ## Handle exceptions
+with resources you can handle your request and access to the states and data of the request.
+
+1. catch the error and handle it in the service.
+```typescript
+searchByCapital(query: string): Observable<Country[]> {
+    return this.http.get<RESTCountry[]>(`${this.API_URL}/capital/${query}`).pipe(
+         map(restCountries => CountryMapper.mapRestCountryArrayToCountryArray(restCountries)),
+    catchError((error) => {
+                console.log('error fetching', error)
+                return throwError(() => new Error(`Error fetching capital ${query}`));
+            })
+    );
+}
+```
+
+2. create the resource in the component. Resources are really useful to handle asynchronous resources
+```typescript
+countryResource = resource({
+    request: () => ({ query: this.query() }),
+    loader: async ({ request }) => {
+        const queryValue = request.query;
+        if (!queryValue) return [];
+        return await firstValueFrom(this.countryService.searchByCapital(queryValue))
+    }
+})
+```
+**Note:** resource are recommended to use primarly for GET request
+
+3. Access to the data
+```html
+countryResource = resource({
+@if (countryResource.error()) {
+<h3>{{ countryResource.error() }}</h3>
+}@if(countryResource.hasValue()) {
+<country-list [countries]="countryResource.value()" />
+}
+```
+
+### Resource properties and functions
+- value
+- status
+- error
+- isLoading
+- has value 
+- reload(): 
+
+
+
     

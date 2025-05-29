@@ -32,7 +32,7 @@
                             country.population | number
                         }}</span>
                     </td>
-                    <td><a class="link-primary">Mas información</a></td>
+                    <td><a class="link-primary" [routerLink]="['/country/by', country.cca2]">Mas información</a></td>
                 </tr>
                 }
             </tbody>
