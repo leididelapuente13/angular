@@ -1,8 +1,9 @@
-import { Component, inject, resource, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { ListComponent } from "../../components/list/list.component";
 import { CountryService } from '../../services/country.service';
-import { firstValueFrom, of } from 'rxjs';
+import { of } from 'rxjs';
+import {rxResource} from '@angular/core/rxjs-interop'
 
 @Component({
     selector: 'app-by-capital-page',
@@ -14,12 +15,10 @@ export class ByCapitalPageComponent {
     countryService = inject(CountryService);
     query = signal('')
 
-    resource = this.rxResource({
+    countryResource = rxResource({
         request: () => ({ query: this.query() }),
         loader: ({ request }) => {
-
             if (!request.query) return of([]);
-
             return this.countryService.searchByCapital(request.query);
         }
     })

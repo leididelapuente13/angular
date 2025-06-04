@@ -3,7 +3,7 @@ import { RESTCountry } from "../interfaces/rest-countries.interface";
 
 export class CountryMapper {
     static mapRestCountryToCountry(restCountry: RESTCountry): Country {
-        const { cca2, flag, flags, capital, population, translations } = restCountry;
+        const { cca2, flag, flags, capital, population, translations, region, subregion } = restCountry;
         return {
             cca2,
             flag,
@@ -11,6 +11,9 @@ export class CountryMapper {
             flagSvg: flags.svg,
             name: translations['spa'].common ?? 'No Spanish Name',
             capital: capital ? capital[0] : '',
+
+            region,
+            subregion
         }
     }
 

@@ -32,7 +32,38 @@
                             country.population | number
                         }}</span>
                     </td>
-                    <td><a class="link-primary" [routerLink]="['/country/by', country.cca2]">Mas información</a></td>
+                    <td>
+                        <a
+                            class="link-primary"
+                            [routerLink]="['/country/by', country.cca2]"
+                            >Mas información</a
+                        >
+                    </td>
+                </tr>
+                }
+
+                <!--  -->
+                @if(errorMessage()){
+                <tr>
+                    <td colspan="8" class="text-center">
+                        {{ errorMessage() }}
+                    </td>
+                </tr>
+                }
+
+                <!--  -->
+                @if(isLoading()){
+                <tr>
+                    <td colspan="8" class="text-center">Cargando</td>
+                </tr>
+                }
+
+                <!--  -->
+                @if(countries().length === 0 && !isLoading()){
+                <tr>
+                    <td colspan="8" class="text-center">
+                        No se encontro información
+                    </td>
                 </tr>
                 }
             </tbody>
