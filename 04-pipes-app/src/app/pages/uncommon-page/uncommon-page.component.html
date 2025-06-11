@@ -1,1 +1,60 @@
-<p>uncommon-page works!</p>,
+<div class="card w-full bg-base-100 card-md shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Plural Pipe</h2>
+    <p>Right now {{ clients().length | i18nPlural : clientsMap() }}</p>
+    <div class="justify-end card-actions">
+      <button
+        class="btn btn-primary"
+        [disabled]="clients().length === 0"
+        (click)="deleteClient()"
+      >
+        Delete client
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="card w-full bg-base-100 card-md shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Slice Pipe</h2>
+    <div>
+      <h3>Original</h3>
+      <p class="text-primary">{{ clients() }}</p>
+    </div>
+    <div>
+      <h3>Sliced: slice:0:2</h3>
+      <p class="text-primary">{{ clients() | slice : 0 : 2 }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card w-full bg-base-100 card-md shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Key Value Pipe</h2>
+    <div>
+      @for (item of client() | keyvalue; track $index) {
+      <div>
+        <span class="text-primary">{{ item.key | titlecase }}:</span>
+        {{ item.value }}
+      </div>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="card w-full bg-base-100 card-md shadow-sm">
+  <div class="card-body">
+    <h2 class="card-title">Async Pipe</h2>
+    <div>
+      <p>{{promiseValue | async }}</p>
+
+      @if(promiseValue | async; as value){
+        <p class="text-primary">{{value}}</p>
+      }
+
+      @else {
+        <p>Wait please</p>
+      }
+    </div>
+  </div>
+</div>
