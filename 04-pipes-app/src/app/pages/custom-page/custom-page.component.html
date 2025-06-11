@@ -20,11 +20,30 @@
 
 <section>
   <h1 class="text-2xl font-bold">Custom Pipes</h1>
+  <h3>
+    Filtering by: {{ searchQuery() }}, Sorting by: {{ sortBy() | titlecase }}
+  </h3>
   <div class="flex gap-2 justify-end w-full">
-    <button class="btn btn-primary">By name</button>
-    <button class="btn btn-secondary">By fly</button>
-    <button class="btn btn-accent">By color</button>
-    <button class="btn btn-info">By creator</button>
+    <input
+      type="text"
+      (input)="searchQuery.set(searchBy.value)"
+      #searchBy
+      class="input input-bordered w-full max-w-xs"
+    />
+    <div class="flex flex-1 gap-1">
+      <button class="btn btn-primary" (click)="updateSortBy('name')">
+        By name
+      </button>
+      <button class="btn btn-secondary" (click)="updateSortBy('canFly')">
+        By fly
+      </button>
+      <button class="btn btn-accent" (click)="updateSortBy('color')">
+        By color
+      </button>
+      <button class="btn btn-info" (click)="updateSortBy('creator')">
+        By creator
+      </button>
+    </div>
   </div>
 </section>
 
@@ -41,7 +60,8 @@
       </tr>
     </thead>
     <tbody>
-      @for (hero of heroes(); track hero.id; let i=$index) {
+      @for (hero of heroes() | heroFilter:searchQuery() | heroSortBy:sortBy(); track hero.id; let i=$index)
+      {
       <tr>
         <td>{{ i + 1 }}</td>
         <td>{{ hero.name }}</td>
@@ -54,11 +74,17 @@
           >
         </td>
         <td>
-          <span [style.color]="hero.color | heroTextColor ">
+          <span [style.color]="hero.color | heroTextColor">
             {{ hero.color | heroColor | titlecase }}
           </span>
         </td>
-        <td><span [class.text-primary]="hero.creator === 0" [class.text-accent]="hero.creator === 1">{{ hero.creator | heroCreator }}</span></td>
+        <td>
+          <span
+            [class.text-primary]="hero.creator === 0"
+            [class.text-accent]="hero.creator === 1"
+            >{{ hero.creator | heroCreator }}</span
+          >
+        </td>
       </tr>
       }
     </tbody>
