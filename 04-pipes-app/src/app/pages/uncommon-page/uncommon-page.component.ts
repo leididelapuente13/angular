@@ -1,4 +1,4 @@
-import { AsyncPipe, I18nPluralPipe, JsonPipe, KeyValuePipe, SlicePipe, TitleCasePipe } from '@angular/common';
+import { AsyncPipe, I18nPluralPipe, KeyValuePipe, SlicePipe, TitleCasePipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
 
 @Component({
